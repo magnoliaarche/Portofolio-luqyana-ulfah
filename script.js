@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // --- PENGATURAN MENU NAVIGASI HP ---
+    
     const menuToggle = document.getElementById("mobile-menu");
     const navLinks = document.getElementById("nav-links");
 
-    // Saat tombol diklik, menu akan muncul/sembunyi
+    
     if (menuToggle && navLinks) {
         menuToggle.addEventListener("click", function () {
             menuToggle.classList.toggle("active");
             navLinks.classList.toggle("active");
         });
 
-        // Menutup menu otomatis ketika salah satu pilihan menu diklik
+        
         const links = navLinks.querySelectorAll("a");
         links.forEach(link => {
             link.addEventListener("click", function () {
