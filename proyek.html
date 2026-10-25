@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyek - Portofolio Luqyana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    
+    <header class="hero-section" id="project-hero">
+        <nav class="navbar">
+            <a href="index.html" class="logo">Portfolio<i> Luqyana Ulfah</i></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Beranda</a>
+                <a href="tentang.html">Tentang Saya</a>
+                <a href="riwayat.html">Riwayat</a>
+                <a href="proyek.html">Proyek</a>
+                <a href="kontak.html">Kontak</a>
+            </div>
+        </nav>
+
+        
+        <div class="hero-container">
+            <div class="hero-text">
+                <span class="badge-ornament">✦ Portofolio & Hasil Karya ✦</span>
+                <h1>Karya & <span class="highlight">Proyek</span></h1>
+                <p class="sub-tagline">Beberapa hasil karya, desain, atau proyek kuliah yang pernah saya kerjakan.</p>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="proyek">
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <img src="padi.jpg" alt="Proyek 1" class="project-img">
+                <div class="project-content">
+                    <h3>Suka fotographi</h3>
+                    <p>Suka bukan berarti jago.</p>
+                    <a href="javascript:void(0)" onclick="bukaFoto('padi.jpg')" class="btn secondary">Lihat Detail</a>
+                </div>
+            </div>
+    
+            
+            <div class="project-card">
+                <img src="kucing1.jpg" alt="Proyek 2" class="project-img">
+                <div class="project-content">
+                    <h3>Another foto</h3>
+                    <p>Nama nya MIHO.</p>
+                    <a href="javascript:void(0)" onclick="bukaFoto('kucing1.jpg')" class="btn secondary">Lihat Detail</a>
+                </div>
+            </div>
+            
+            
+            <div class="project-card">
+                <img src="fotoku.jpg" alt="Sampul Video" class="project-img">
+                <div class="project-content">
+                  <h3>Suka reedit template Video</h3>
+                  <p>Video template yang saya edit ulang.</p>
+                  <a href="javascript:void(0)" onclick="bukaVideo('moon.mp4')" class="btn secondary">Lihat Detail</a>
+              </div>
+          </div>
+        </div>
+    </section>
+
+
+    <div id="popup-media" class="modal-popup">
+        <span class="tutup-popup" onclick="tutupMedia()">&times;</span>
+        <img class="isi-popup" id="gambar-popup" style="display: none;">
+        <video class="isi-popup" id="video-popup" controls style="display: none;"></video>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

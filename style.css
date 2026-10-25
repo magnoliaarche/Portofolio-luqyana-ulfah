@@ -1,0 +1,572 @@
+/* Variabel Warna Tema Vintage Botanical & Hijau Sage */
+:root {
+    --bg-paper: #cedbba;          /* Warna kertas tua / vintage gading */
+    --card-bg: #eaefe5;           /* Hijau sage sangat muda/lembut */
+    --border-vintage: #cbd5c3;    /* Garis batas klasik */
+    --primary-green: #36452f;     /* Hijau zaitun gelap yang elegan */
+    --accent-green: #586b4c;      /* Hijau lumut hangat */
+    --text-main: #2b3327;         /* Teks gelap kehijaua agar nyaman dibaca */
+    --white: #ffffff;
+    --shadow: 0 10px 25px rgba(54, 69, 47, 0.12);
+}
+
+/* Pengaturan Otomatis Mengikuti Tema Perangkat (Dark Mode) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-paper: #1c2219;        
+        --card-bg: #273022;       
+        --border-vintage: #506347;  
+        --primary-green: #73976d;   
+        --accent-green: #a4b89b;    
+        --text-main: #ced9ca;       
+        --white: #333c2f;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-paper);
+    color: var(--text-main);
+    line-height: 1.7;
+}
+
+/* Ornamen Latar Belakang (Aksen Bunga/Botanical ala Cottagecore) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%2336452f" fill-opacity="0.03" d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 95C25.1 95 5 74.9 5 50S25.1 5 50 5s45 20.1 45 45-20.1 45-45 45z"/></svg>'),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path fill="%23586b4c" fill-opacity="0.02" d="M75 0C33.6 0 0 33.6 0 75s33.6 75 75 75 75-33.6 75-75S116.4 0 75 0zm0 145C36.3 145 5 113.7 5 75S36.3 5 75 5s70 31.3 70 70-31.3 70-70 70z"/></svg>');
+    opacity: 0.6;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Membatasi lebar konten agar terpusat rapi */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- ORNAMEN RENDA TEPI --- */
+.lace-edge {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    object-fit: cover;
+    width: 80px;
+    max-width: 40px;
+    mix-blend-mode: screen;
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 999;
+}
+.left-edge {
+    left: 0;
+}
+.right-edge {
+    right: 0;
+    transform: scaleX(-1);
+}
+
+/* --- NAVIGASI / NAVBAR --- */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 5%;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent !important; /* Diubah agar renda tidak terpotong */
+    border-bottom: 1.5px solid var(--border-vintage) !important; 
+    box-shadow: none !important;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
+.logo i {
+    color: var(--accent-green);
+}
+
+/* Tombol Garis Dua (Menu Toggle) */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-green);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Daftar Menu Navigasi (Dropdown) */
+.nav-links {
+    position: absolute;
+    top: 100%;
+    right: 8%;
+    background-color: var(--card-bg);
+    border: 1.5px solid var(--border-vintage);
+    border-radius: 8px;
+    list-style: none;
+    flex-direction: column;
+    width: 180px;
+    padding: 1rem 0;
+    gap: 0.8rem;
+    box-shadow: var(--shadow);
+    display: none; 
+}
+
+.nav-links.active {
+    display: flex; 
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.4rem 1.2rem;
+    display: block;
+    transition: background 0.2s;
+}
+
+.nav-links a:hover {
+    background-color: rgba(82, 99, 69, 0.1);
+    color: var(--accent-green);
+}
+
+/* --- BAGIAN KEPALA (HERO SECTION) --- */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 2rem auto;
+    width: 100%;
+    padding-top: 80px; /* Menambah jarak agar konten tidak tertutup navbar yang melayang */
+}
+
+.highlight {
+    font-style: italic;
+    color: var(--accent-green);
+}
+
+.hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--primary-green);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--primary-green);
+    margin-bottom: 0.2rem;
+}
+
+.sub-tagline {
+    font-size: 0.95rem;
+    color: #525e4c;
+    margin-bottom: 2rem;
+}
+
+/* Wadah Foto Profil */
+.hero-image-frame {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem; 
+}
+
+.frame-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.flower-corner {
+    position: absolute;
+    bottom: -27px; /* Angka minus untuk menggeser bunga ke luar bingkai bawah */
+    left: -43px;    /* Geser ke kanan sedikit dari sudut kiri */
+    width: 278px;  /* Ukuran besaran bunga */
+    z-index: 10;
+    mix-blend-mode: screen; /* Menghapus latar hitam otomatis */
+    pointer-events: none;
+}
+.basic-frame {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    background-color: var(--card-bg);
+    border: 3px solid var(--primary-green);
+    border-radius: 8px; 
+    box-shadow: 0 10px 25px rgba(54, 69, 47, 0.15);
+    padding: 5px; 
+    overflow: hidden; 
+}
+
+.basic-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Tombol CTA Utama */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.75rem 1.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn.primary {
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: 1px solid var(--primary-green);
+}
+
+.btn.primary:hover {
+    background-color: #242e1f;
+}
+
+.btn.secondary {
+    background-color: transparent;
+    border: 1.5px solid var(--primary-green);
+    color: var(--primary-green);
+}
+
+.btn.secondary:hover {
+    background-color: var(--card-bg);
+}
+
+/* --- BAGIAN UMUM SECTION --- */
+section {
+    padding: 4rem 8%;
+    border-top: 1px dashed var(--border-vintage);
+}
+
+.section-title-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--primary-green);
+    margin-bottom: 0.4rem;
+}
+
+.section-title-box .section-desc {
+    font-size: 0.95rem;
+    color: #55634d;
+    margin-bottom: 2.5rem;
+}
+
+/* About Section Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.about-card {
+    background-color: var(--card-bg);
+    padding: 2.2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-vintage);
+}
+
+.about-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+.skills-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.skills-list span {
+    color: var(--accent-green);
+    margin-right: 0.5rem;
+}
+
+/* Timeline Experience */
+.timeline {
+    border-left: 2px solid var(--accent-green);
+    padding-left: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 1rem;
+}
+
+.timeline-item .year {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timeline-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--primary-green);
+    margin: 0.2rem 0;
+}
+
+.timeline-item .place {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #485740;
+    margin-bottom: 0.4rem;
+}
+
+/* --- BAGIAN PROYEK & KARYA --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-vintage);
+    border-radius: 10px;
+    overflow: hidden; 
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-img, .project-video, .video-wrapper iframe {
+    width: 100%;
+    border-bottom: 1.5px solid var(--border-vintage);
+}
+
+.project-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-video, .video-wrapper {
+    aspect-ratio: 16 / 9;
+}
+
+.project-video {
+    object-fit: cover;
+    background-color: #000;
+    display: block;
+}
+
+.video-wrapper iframe {
+    height: 100%;
+    border: none;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+}
+
+.project-content p {
+    font-size: 0.9rem;
+    color: #55634d;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Pengaturan Pop-up Foto & Video */
+.modal-popup {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(28, 34, 25, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.isi-popup {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.tutup-popup {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: var(--white);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- FOOTER / KONTAK --- */
+.contact-section {
+    background-color: var(--primary-green);
+    color: var(--white);
+    text-align: center;
+    padding: 4.5rem 8%;
+    border-top: none;
+    position: relative;
+}
+
+.contact-section::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 90%;
+    border: 2px solid rgba(215, 222, 208, 0.2);
+    pointer-events: none;
+}
+
+.contact-section .section-title-box h2,
+.contact-section h2 {
+    color: var(--white);
+}
+
+.contact-section .section-desc {
+    color: #c7d4be;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2.5rem 0 3rem;
+}
+
+.social-btn {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--white);
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: var(--accent-green);
+    border-color: var(--accent-green);
+}
+
+.footer-bottom {
+    font-size: 0.85rem;
+    color: #a8b89e;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+}
+
+/* --- RESPONSIF UNTUK LAYAR HP --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1.2rem 5%;
+    }
+    .nav-links {
+        right: 5%;
+        width: 160px;
+    }
+    
+    .hero-container {
+        display: flex;
+        flex-direction: column; 
+        text-align: center;
+        gap: 2rem; 
+        margin-top: 1rem;
+    }
+    
+    .hero-image-frame {
+        order: 1;
+        margin-top: 0rem; 
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-text {
+        order: 2;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem; /* Sedikit dikecilkan agar pas di layar HP */
+    }
+
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-section, section {
+        padding: 3rem 5%;
+    }
+}
